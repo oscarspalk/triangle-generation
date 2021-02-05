@@ -78,5 +78,4 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   cotx.stroke();
   cotx.closePath();
 }
-
 tegnTrekantMedVinkler(ctx, 30, 30);
