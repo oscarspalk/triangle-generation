@@ -2,10 +2,8 @@ var canvaso = document.createElement("canvas");
 var btn = document.createElement("button");
 btn.innerHTML = "Update";
 btn.addEventListener("click", function () {
-  console.log("klik");
   var a = document.getElementById("a").value;
   var b = document.getElementById("b").value;
-  var scale = document.getElementById("scale").value;
   ctx.clearRect(0, 0, canvaso.width, canvaso.height);
   tegnTrekantMedVinkler(ctx, a, b);
 });
@@ -72,9 +70,9 @@ function tegnRetVinkletTrekantMedVinkler(cotx, vinkelA) {
   cotx.closePath();
 }
 
-function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, scale) {
+function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   var vinkelC = ((180 - (vinkelA + vinkelB)) * Math.PI) / 180;
-  var a_length = scale;
+  var a_length = 100;
   var vinkelAA = (vinkelA * Math.PI) / 180;
   var vinkelBB = (vinkelB * Math.PI) / 180;
   var b_height = Math.sin(vinkelC) * a_length;
