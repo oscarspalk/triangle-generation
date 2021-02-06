@@ -4,7 +4,12 @@ btn.innerHTML = "Update";
 btn.addEventListener("click", function () {
   var a = document.getElementById("a").value;
   var b = document.getElementById("b").value;
-  ctx.clearRect(0, 0, canvaso.width, canvaso.height);
+  ctx.clearRect(
+    -canvaso.width / 2,
+    -canvaso.height / 2,
+    canvaso.width,
+    canvaso.height
+  );
   tegnTrekantMedVinkler(ctx, a, b);
 });
 canvaso.classList.add("canvaso");
@@ -78,11 +83,12 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   var b_height = Math.sin(vinkelC) * a_length;
   var c_length = a_length * Math.cos(vinkelC);
   var b_length = (a_length / Math.sin(vinkelAA)) * Math.sin(vinkelBB);
+  cotx.translate(canvaso.width / 2, canvaso.height / 2);
   cotx.beginPath();
-  cotx.moveTo(400, 400);
+  cotx.moveTo(0, 0);
   cotx.lineTo(c_length, -b_height);
-  cotx.lineTo(b_length, 400);
-  cotx.lineTo(400, 400);
+  cotx.lineTo(b_length, 0);
+  cotx.lineTo(0, 0);
   cotx.stroke();
   cotx.closePath();
 }
