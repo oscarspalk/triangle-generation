@@ -72,7 +72,7 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   var b_length = (a_length / Math.sin(vinkelAA)) * Math.sin(vinkelBB);
   
   // logs
-  
+  console.log("VinkelC = " + vinkelC);
   console.log("B_height = " + b_height);
   console.log("c_length = " + c_length);
   console.log("b_length = " + b_length);
