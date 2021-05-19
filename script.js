@@ -80,9 +80,10 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
   console.log(c_length);
   console.log("b_length = " + b_length);
   
-  
-  cotx.translate(canvaso.width / 2, canvaso.height / 2);
-    cotx.clearRect(0,0, canvaso.width * 4, canvaso.height * 4);
+    
+  cotx.clearRect(0,0, canvaso.width * 4, canvaso.height * 4);
+
+   
   cotx.beginPath();
   cotx.moveTo(0, 0);
     if(180 - (vinkelA + vinkelB) === 90){
@@ -112,3 +113,4 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
   cotx.closePath();
   }
 }
+  cotx.translate(canvaso.width / 2, canvaso.height / 2);
