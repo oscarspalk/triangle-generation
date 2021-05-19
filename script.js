@@ -62,7 +62,7 @@ function tegnRect(cotx, startX, startY, width, height) {
   cotx.closePath();
 }
 */
-function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
+function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
   if(!(vinkelA <= 0 || vinkelB <= 0)){
     
   
@@ -82,27 +82,28 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   
   
   cotx.translate(canvaso.width / 2, canvaso.height / 2);
+    cotx.clearRect(0,0, canvas.width, canvas.height);
   cotx.beginPath();
   cotx.moveTo(0, 0);
     if(180 - (vinkelA + vinkelB) === 90){
-      cotx.rect(0,0,25,-25);
+      cotx.rect(0,0,radius,-radius);
     }
     else{
-  cotx.arc(0,0,25, 0, -vinkelC, true);
+  cotx.arc(0,0,radius, 0, -vinkelC, true);
     }
   cotx.moveTo(0,0);
     
     // 2
   cotx.lineTo(c_length, -b_height);
   cotx.moveTo(c_length, -b_height);
-    cotx.arc(c_length, -b_height, 25, vinkelBB + vinkelAA, vinkelAA, true);
+    cotx.arc(c_length, -b_height, radius, vinkelBB + vinkelAA, vinkelAA, true);
     cotx.moveTo(c_length, -b_height);
 
     // 3
     
   cotx.lineTo(b_length, 0);
   cotx.moveTo(b_length,0);
-    cotx.arc(b_length, 0, 25, Math.PI, Math.PI + vinkelAA);
+    cotx.arc(b_length, 0, radius, Math.PI, Math.PI + vinkelAA);
     cotx.moveTo(b_length, 0);
     
     
