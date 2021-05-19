@@ -96,7 +96,7 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   cotx.lineTo(c_length, -b_height);
   cotx.moveTo(c_length, -b_height);
     cotx.arc(c_length, -b_height, 25, vinkelBB + vinkelAA, vinkelAA, true);
-    
+    cotx.moveTo(c_length, -b_height);
 
   cotx.lineTo(b_length, 0);
   cotx.lineTo(0, 0);
