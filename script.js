@@ -1,20 +1,7 @@
 var canvaso = document.createElement("canvas");
-var btn = document.createElement("button");
-btn.innerHTML = "Update";
-btn.addEventListener("click", function () {
-  var a = document.getElementById("a").value;
-  var b = document.getElementById("b").value;
-  ctx.clearRect(
-    -canvaso.width / 2,
-    -canvaso.height / 2,
-    canvaso.width,
-    canvaso.height
-  );
-  tegnTrekantMedVinkler(ctx, a, b);
-});
+
 canvaso.classList.add("canvaso");
 document.body.appendChild(canvaso);
-document.body.appendChild(btn);
 canvaso.width = 900;
 canvaso.height = 900;
 
