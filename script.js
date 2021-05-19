@@ -63,7 +63,7 @@ function tegnRect(cotx, startX, startY, width, height) {
 }
 */
 function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
-  if(vinkelA =< 0 || vinkelB =< 0){
+  if(vinkelA <= 0 || vinkelB <= 0){
     console.log("Error")
     return;
   }
