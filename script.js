@@ -49,7 +49,7 @@ function tegnRect(cotx, startX, startY, width, height) {
   cotx.stroke();
 }
 
-function tegnRetVinkletTrekantMedVinkler(cotx, vinkelA) {
+/*function tegnRetVinkletTrekantMedVinkler(cotx, vinkelA) {
   var sideA_length = Math.cos(vinkelA) * 150;
   var sideB_height = Math.cos(90 - vinkelA) * 150;
   cotx.translate(canvaso.width / 2, canvaso.height / 2);
@@ -61,7 +61,7 @@ function tegnRetVinkletTrekantMedVinkler(cotx, vinkelA) {
   cotx.stroke();
   cotx.closePath();
 }
-
+*/
 function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   var vinkelC = ((180 - (vinkelA + vinkelB)) * Math.PI) / 180;
   var a_length = 100;
@@ -73,6 +73,7 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   cotx.translate(canvaso.width / 2, canvaso.height / 2);
   cotx.beginPath();
   cotx.moveTo(0, 0);
+  cotx.arc(0,0, 50, vinkelC, vinkelBB);
   cotx.lineTo(c_length, -b_height);
   cotx.lineTo(b_length, 0);
   cotx.lineTo(0, 0);
