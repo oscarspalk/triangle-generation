@@ -81,7 +81,7 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
   console.log("b_length = " + b_length);
   
     
-  cotx.clearRect(0,0, canvaso.width * 4, canvaso.height * 4);
+    cotx.translate(canvaso.width / 2, canvaso.height / 2);
 
    
   cotx.beginPath();
@@ -113,4 +113,3 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
   cotx.closePath();
   }
 }
-  cotx.translate(canvaso.width / 2, canvaso.height / 2);
