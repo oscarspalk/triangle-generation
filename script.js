@@ -85,10 +85,10 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   cotx.beginPath();
   cotx.moveTo(0, 0);
     if(180 - (vinkelA + vinkelB) === 90){
-      cotx.rect(0,0,-50,-50);
+      cotx.rect(0,0,25,-25);
     }
     else{
-  cotx.arc(0,0,50, 0, -vinkelC, true);
+  cotx.arc(0,0,25, 0, -vinkelC, true);
     }
   cotx.moveTo(0,0);
   cotx.lineTo(c_length, -b_height);
