@@ -63,10 +63,9 @@ function tegnRect(cotx, startX, startY, width, height) {
 }
 */
 function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
-  if(vinkelA <= 0 || vinkelB <= 0){
-    console.log("Error")
-    return;
-  }
+  if(!(vinkelA <= 0 || vinkelB <= 0)){
+    
+  
   var vinkelC = ((180 - (vinkelA + vinkelB)) * Math.PI) / 180;
   var a_length = 100;
   var vinkelAA = (vinkelA * Math.PI) / 180;
@@ -94,4 +93,5 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB) {
   cotx.lineTo(0, 0);
   cotx.stroke();
   cotx.closePath();
+  }
 }
