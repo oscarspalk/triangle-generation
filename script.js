@@ -139,10 +139,14 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
 }
 
 function Ask() {
-  var vinkelA = prompt("Hvad skal vinkel A være?");
-  var vinkelB = prompt("Hvad skal vinkel B være?");
-  var radius = prompt("Hvad skal radius af vinklerne være?");
+  var vinkelA = parseFloat(prompt("Hvad skal vinkel A være?"));
+  var vinkelB = parseFloat(prompt("Hvad skal vinkel B være?"));
+  var radius = parseFloat(prompt("Hvad skal radius af vinklerne være?"));
   tegnTrekantMedVinkler(ctx, vinkelA, vinkelB, radius);
 }
 
-Ask();
+function clear() {
+  ctx.resetTransform();
+  ctx.restore();
+  ctx.clearRect(0, 0, -canvaso.width * 2, canvaso.height * 2);
+}

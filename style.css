@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+button {
+  width: 100%;
+}
 .canvaso {
   border: 3px solid black;
   user-select: none;
