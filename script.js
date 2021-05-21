@@ -138,4 +138,11 @@ function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
   }
 }
 
-tegnTrekantMedVinkler(ctx, 60, 30, 15);
+function Ask() {
+  var vinkelA = prompt("Hvad skal vinkel A være?");
+  var vinkelB = prompt("Hvad skal vinkel B være?");
+  var radius = prompt("Hvad skal radius af vinklerne være?");
+  tegnTrekantMedVinkler(ctx, vinkelA, vinkelB, radius);
+}
+
+Ask();
