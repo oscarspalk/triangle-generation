@@ -1,11 +1,22 @@
-var canvaso = document.createElement("canvas");
+var ctx;
+var canvaso;
 
-canvaso.classList.add("canvaso");
-document.body.appendChild(canvaso);
-canvaso.width = window.innerWidth;
-canvaso.height = window.innerHeight;
+window.addEventListener("resize", () => {
+  canvaso.height = window.innerHeight / 1.2;
+  canvaso.width = window.innerWidth;
+});
 
-var ctx = canvaso.getContext("2d");
+function init() {
+  canvaso = document.createElement("canvas");
+
+  canvaso.classList.add("canvaso");
+  canvaso.id = "canvas";
+  document.body.appendChild(canvaso);
+  canvaso.width = window.innerWidth;
+  canvaso.height = window.innerHeight;
+  ctx = canvaso.getContext("2d");
+}
+
 function tegnLinje(context, startX, startY, endX, endY) {
   context.beginPath();
   context.moveTo(startX, startY);
@@ -144,9 +155,15 @@ function Ask() {
   var radius = parseFloat(prompt("Hvad skal radius af vinklerne være?"));
   tegnTrekantMedVinkler(ctx, vinkelA, vinkelB, radius);
 }
+const clearone = document.getElementById("clear");
+clearone.addEventListener("click", (event) => {
+  Clear();
+});
+function Clear() {
+  var canso = document.getElementById("canvas");
+  canso.remove();
 
-function clear() {
-  ctx.resetTransform();
-  ctx.restore();
-  ctx.clearRect(0, 0, -canvaso.width * 2, canvaso.height * 2);
+  init();
 }
+
+init();
