@@ -2,8 +2,8 @@ var canvaso = document.createElement("canvas");
 
 canvaso.classList.add("canvaso");
 document.body.appendChild(canvaso);
-canvaso.width = 900;
-canvaso.height = 900;
+canvaso.width = window.innerWidth;
+canvaso.height = window.innerHeight;
 
 var ctx = canvaso.getContext("2d");
 function tegnLinje(context, startX, startY, endX, endY) {
@@ -49,7 +49,8 @@ function tegnRect(cotx, startX, startY, width, height) {
   cotx.stroke();
 }
 
-/*function tegnRetVinkletTrekantMedVinkler(cotx, vinkelA) {
+// retvinklet
+function tegnRetVinkletTrekantMedVinkler(cotx, vinkelA) {
   var sideA_length = Math.cos(vinkelA) * 150;
   var sideB_height = Math.cos(90 - vinkelA) * 150;
   cotx.translate(canvaso.width / 2, canvaso.height / 2);
@@ -61,55 +62,80 @@ function tegnRect(cotx, startX, startY, width, height) {
   cotx.stroke();
   cotx.closePath();
 }
-*/
-function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
-  if(!(vinkelA <= 0 || vinkelB <= 0)){
-    
-  
-  var vinkelC = ((180 - (vinkelA + vinkelB)) * Math.PI) / 180;
-  var a_length = 100;
-  var vinkelAA = (vinkelA * Math.PI) / 180;
-  var vinkelBB = (vinkelB * Math.PI) / 180;
-  var b_height = Math.sin(vinkelC) * a_length;
-  var c_length = a_length * Math.cos(vinkelC);
-  var b_length = (a_length / Math.sin(vinkelAA)) * Math.sin(vinkelBB);
-  
-  // logs
-  console.log("VinkelC = " + vinkelC);
-  console.log("B_height = " + b_height);
-  console.log(c_length);
-  console.log("b_length = " + b_length);
-  
-    
-    cotx.translate(canvaso.width / 2, canvaso.height / 2);
 
-   
-  cotx.beginPath();
-  cotx.moveTo(0, 0);
-    if(180 - (vinkelA + vinkelB) === 90){
-      cotx.rect(0,0,radius,-radius);
+function tegnTrekantMedVinkler(cotx, vinkelA, vinkelB, radius) {
+  if (!(vinkelA <= 0 || vinkelB <= 0)) {
+    var trueA;
+    var trueB;
+    var cText;
+    var aText;
+    var bText;
+    if (vinkelA === 90) {
+      trueA = 180 - 90 - vinkelB;
+      trueB = vinkelB;
+      cText = "a 90°";
+      aText = `c ${trueA}°`;
+      bText = `b ${trueB}°`;
+    } else if (vinkelB === 90) {
+      trueB = 180 - 90 - vinkelA;
+      trueA = vinkelA;
+      cText = `b 90°`;
+      aText = `a ${trueA}°`;
+      bText = `c ${trueB}°`;
+    } else {
+      trueA = vinkelA;
+      trueB = vinkelB;
+      cText = `c ${180 - trueA - trueB}°`;
+      aText = `a ${vinkelA}°`;
+      bText = `b ${vinkelB}°`;
     }
-    else{
-  cotx.arc(0,0,radius, 0, -vinkelC, true);
+    var vinkelCC = ((180 - (trueA + trueB)) * Math.PI) / 180;
+    var a_length = 100;
+    var vinkelAA = (trueA * Math.PI) / 180;
+    var vinkelBB = (trueB * Math.PI) / 180;
+    var b_height = Math.sin(vinkelCC) * a_length;
+    var c_length = a_length * Math.cos(vinkelCC);
+    var b_length = (a_length / Math.sin(vinkelAA)) * Math.sin(vinkelBB);
+
+    // logs
+    console.log("VinkelC = " + vinkelCC);
+    console.log("B_height = " + b_height);
+    console.log(c_length);
+    console.log("b_length = " + b_length);
+
+    cotx.translate(canvaso.width / 3, canvaso.height / 2);
+
+    cotx.beginPath();
+    cotx.moveTo(0, 0);
+    ctx.font = "14px Arial";
+
+    if (180 - (trueA + trueB) === 90) {
+      cotx.rect(0, 0, radius, -radius);
+    } else {
+      cotx.arc(0, 0, radius, 0, -vinkelCC, true);
     }
-  cotx.moveTo(0,0);
-    
+    cotx.moveTo(0, 0);
+    cotx.fillText(cText, -20, 20);
+
     // 2
-  cotx.lineTo(c_length, -b_height);
-  cotx.moveTo(c_length, -b_height);
+    cotx.lineTo(c_length, -b_height);
+    cotx.moveTo(c_length, -b_height);
     cotx.arc(c_length, -b_height, radius, vinkelBB + vinkelAA, vinkelAA, true);
     cotx.moveTo(c_length, -b_height);
+    cotx.fillText(bText, c_length - 20, -b_height - 20);
 
     // 3
-    
-  cotx.lineTo(b_length, 0);
-  cotx.moveTo(b_length,0);
+
+    cotx.lineTo(b_length, 0);
+    cotx.moveTo(b_length, 0);
     cotx.arc(b_length, 0, radius, Math.PI, Math.PI + vinkelAA);
     cotx.moveTo(b_length, 0);
-    
-    
-  cotx.lineTo(0, 0);
-  cotx.stroke();
-  cotx.closePath();
+    cotx.fillText(aText, b_length + 20, 0 + 20);
+
+    cotx.lineTo(0, 0);
+    cotx.stroke();
+    cotx.closePath();
   }
 }
+
+tegnTrekantMedVinkler(ctx, 60, 30, 15);
