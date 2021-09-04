@@ -1,6 +1,7 @@
 var ctx;
 var canvaso;
 
+
 window.addEventListener("resize", () => {
   canvaso.height = window.innerHeight / 1.2;
   canvaso.width = window.innerWidth;
