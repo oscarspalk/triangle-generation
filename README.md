@@ -1,3 +1,3 @@
 # experimental-canvas
 Title says it all.
-Check out the triangle generator at: [here](https://oscar2411-s.github.io/triangle-generation/)
+Check out the triangle generator at: [here](https://oscarspalk.github.io/triangle-generation/)
